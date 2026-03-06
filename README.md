@@ -9,7 +9,7 @@ The website is designed with **21st.dev inspired UI patterns**, smooth animation
 ## Live Website
 
 **Portfolio:**
-https://YOUR-DEPLOYED-URL.vercel.app
+https://uzair-portfolio-rho.vercel.app/
 
 **GitHub Repository:**
 https://github.com/shREKT7/uzair-portfolio
