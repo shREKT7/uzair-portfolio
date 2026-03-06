@@ -147,35 +147,42 @@ export function AnimatedCardStack({ projects }: AnimatedCardStackProps) {
                                                 ))}
                                             </div>
 
-                                            {/* Bottom row */}
-                                            <div className="flex items-center justify-between pt-1">
-                                                <span className="text-[10px] text-white/25 font-mono">Click to explore →</span>
-                                                <div className="flex items-center gap-2">
-                                                    {!isPlaceholder(project.github) && (
-                                                        <a
-                                                            href={project.github}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            aria-label="GitHub"
-                                                            onClick={(e) => e.stopPropagation()}
-                                                            className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-violet-500/30 text-white/50 hover:text-white transition-all"
-                                                        >
-                                                            <Github size={13} />
-                                                        </a>
-                                                    )}
-                                                    {project.demo && !isPlaceholder(project.demo) && (
-                                                        <a
-                                                            href={project.demo}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            aria-label="Live demo"
-                                                            onClick={(e) => e.stopPropagation()}
-                                                            className="p-1.5 rounded-lg bg-violet-500/10 hover:bg-violet-500/20 border border-violet-500/20 text-violet-400 hover:text-violet-300 transition-all"
-                                                        >
-                                                            <ArrowUpRight size={13} />
-                                                        </a>
-                                                    )}
-                                                </div>
+                                            {/* Bottom row — labeled buttons */}
+                                            <div className="flex items-center gap-2 pt-1">
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setSelectedProject(project);
+                                                    }}
+                                                    className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-violet-500/10 hover:bg-violet-500/20 border border-violet-500/20 hover:border-violet-500/40 text-violet-300 hover:text-violet-200 text-xs font-mono transition-all"
+                                                >
+                                                    View Project
+                                                </button>
+                                                {!isPlaceholder(project.github) && (
+                                                    <a
+                                                        href={project.github}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        aria-label="GitHub Repo"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-violet-500/30 text-white/50 hover:text-white text-xs font-mono transition-all"
+                                                    >
+                                                        <Github size={12} />
+                                                        GitHub Repo
+                                                    </a>
+                                                )}
+                                                {project.demo && !isPlaceholder(project.demo) && (
+                                                    <a
+                                                        href={project.demo}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        aria-label="Live demo"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="p-2 rounded-lg bg-violet-500/10 hover:bg-violet-500/20 border border-violet-500/20 text-violet-400 hover:text-violet-300 transition-all"
+                                                    >
+                                                        <ArrowUpRight size={13} />
+                                                    </a>
+                                                )}
                                             </div>
                                         </div>
                                     )}

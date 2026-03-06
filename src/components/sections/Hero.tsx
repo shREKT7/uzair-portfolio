@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDown, Download } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio";
 
 export function Hero() {
@@ -100,6 +100,15 @@ export function Hero() {
                         className="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white/80 hover:text-white font-semibold text-sm transition-all duration-300 hover:scale-105"
                     >
                         Contact Me
+                    </a>
+                    <a
+                        href="/resume/uzair-teli-resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-violet-500/30 text-white/80 hover:text-white font-semibold text-sm transition-all duration-300 hover:scale-105"
+                    >
+                        <Download size={15} />
+                        Resume
                     </a>
                 </motion.div>
 

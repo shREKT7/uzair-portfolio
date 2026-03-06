@@ -15,7 +15,7 @@ export function About() {
                     {/* Text content */}
                     <div className="space-y-6">
                         <p className="text-white/70 text-lg leading-relaxed">
-                            {portfolioData.about}
+                            I&apos;m a Computer Science student focused on AI, systems programming, and network security. I enjoy building scalable software systems that combine machine learning with real-world infrastructure and networking technologies.
                         </p>
 
                         {/* Info chips */}
