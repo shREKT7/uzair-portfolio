@@ -1,7 +1,43 @@
 "use client";
 
 import { SectionWrapper, SectionHeading, StaggerContainer, StaggerItem } from "@/components/ui/section-wrapper";
+import { FaAws } from "react-icons/fa";
 import { portfolioData } from "@/lib/portfolio";
+import LogoLoop from "@/components/ui/logo-loop";
+import {
+    SiReact,
+    SiNextdotjs,
+    SiTypescript,
+    SiJavascript,
+    SiPython,
+    SiCplusplus,
+    SiTensorflow,
+    SiPytorch,
+    SiFlask,
+    SiMongodb,
+    SiMysql,
+    SiGooglecloud,
+    SiGit,
+    SiGithub
+} from "react-icons/si";
+
+const techLogos = [
+    { node: <SiReact />, title: "React", href: "https://react.dev" },
+    { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+    { node: <SiTypescript />, title: "TypeScript" },
+    { node: <SiJavascript />, title: "JavaScript" },
+    { node: <SiPython />, title: "Python" },
+    { node: <SiCplusplus />, title: "C++" },
+    { node: <SiTensorflow />, title: "TensorFlow" },
+    { node: <SiPytorch />, title: "PyTorch" },
+    { node: <SiFlask />, title: "Flask" },
+    { node: <SiMongodb />, title: "MongoDB" },
+    { node: <SiMysql />, title: "MySQL" },
+    { node: <FaAws />, title: "AWS" },
+    { node: <SiGooglecloud />, title: "Google Cloud" },
+    { node: <SiGit />, title: "Git" },
+    { node: <SiGithub />, title: "GitHub" }
+];
 
 // Map of tech names to emoji/symbol icons (no external icon-pack needed beyond lucide)
 const techIcons: Record<string, string> = {
@@ -47,9 +83,59 @@ const categoryTextColors: Record<string, string> = {
 
 export function TechStack() {
     return (
-        <SectionWrapper id="tech-stack" className="py-24 px-6">
-            <div className="max-w-6xl mx-auto">
+        <SectionWrapper id="tech-stack" className="relative py-24 px-6 overflow-hidden">
+            {/* Soft radial glow behind section */}
+            <div
+                className="pointer-events-none absolute inset-0 mix-blend-screen"
+                style={{
+                    background: "radial-gradient(circle at center, rgba(139,92,246,0.12) 0%, transparent 70%)",
+                }}
+            />
+
+            <div className="relative max-w-6xl mx-auto">
                 <SectionHeading label="Technical Skills" title="My Tech Stack" />
+
+                <div className="relative w-full overflow-hidden py-16 text-white/80">
+                    {/* First Loop: always visible, smaller height on mobile */}
+                    <div className="md:hidden">
+                        <LogoLoop
+                            logos={techLogos}
+                            speed={70}
+                            direction="left"
+                            logoHeight={32}
+                            gap={40}
+                            scaleOnHover
+                            fadeOut
+                            ariaLabel="Technology stack mobile"
+                        />
+                    </div>
+                    <div className="hidden md:block">
+                        <LogoLoop
+                            logos={techLogos}
+                            speed={90}
+                            direction="left"
+                            logoHeight={44}
+                            gap={60}
+                            scaleOnHover
+                            fadeOut
+                            ariaLabel="Technology stack"
+                        />
+                    </div>
+
+                    {/* Second Loop: only visible on tablet/desktop */}
+                    <div className="hidden md:block mt-8">
+                        <LogoLoop
+                            logos={[...techLogos].reverse()}
+                            speed={70}
+                            direction="right"
+                            logoHeight={36}
+                            gap={50}
+                            scaleOnHover
+                            fadeOut
+                            ariaLabel="Technology stack second row"
+                        />
+                    </div>
+                </div>
 
                 <div className="space-y-10">
                     {Object.entries(portfolioData.skills).map(([category, skills]) => (
