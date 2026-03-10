@@ -1,8 +1,8 @@
 "use client";
 
-import { SectionWrapper, SectionHeading, StaggerContainer, StaggerItem } from "@/components/ui/section-wrapper";
+import { motion } from "framer-motion";
+import { SectionWrapper, SectionHeading } from "@/components/ui/section-wrapper";
 import { FaAws } from "react-icons/fa";
-import { portfolioData } from "@/lib/portfolio";
 import LogoLoop from "@/components/ui/logo-loop";
 import {
     SiReact,
@@ -20,6 +20,7 @@ import {
     SiGit,
     SiGithub
 } from "react-icons/si";
+import { Network, Activity, FileArchive } from "lucide-react";
 
 const techLogos = [
     { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -39,126 +40,130 @@ const techLogos = [
     { node: <SiGithub />, title: "GitHub" }
 ];
 
-// Map of tech names to emoji/symbol icons (no external icon-pack needed beyond lucide)
-const techIcons: Record<string, string> = {
-    "C++": "⚡",
-    Python: "🐍",
-    Java: "☕",
-    JavaScript: "𝙅𝙎",
-    SQL: "🗄",
-    PyTorch: "🔥",
-    TensorFlow: "🧠",
-    Flask: "🌶",
-    "MERN Stack": "🌐",
-    MongoDB: "🍃",
-    MySQL: "🐬",
-    "TCP/IP": "🔗",
-    "Packet Analysis": "📡",
-    PCAP: "📦",
-    TLS: "🔒",
-    Multithreading: "⚙",
-    "Flow Tracking": "📊",
-    Git: "📝",
-    GitHub: "🐙",
-    CMake: "🔨",
-    AWS: "☁",
-    "Google Cloud": "🌩",
+const skillCategories = [
+    {
+        title: "Core Languages",
+        skills: [
+            { name: "C++", icon: SiCplusplus },
+            { name: "Python", icon: SiPython },
+            { name: "JavaScript", icon: SiJavascript }
+        ]
+    },
+    {
+        title: "AI & Machine Learning",
+        skills: [
+            { name: "PyTorch", icon: SiPytorch },
+            { name: "TensorFlow", icon: SiTensorflow },
+            { name: "Flask", icon: SiFlask }
+        ]
+    },
+    {
+        title: "Systems & Networking",
+        skills: [
+            { name: "TCP/IP", icon: Network },
+            { name: "Packet Analysis", icon: Activity },
+            { name: "PCAP", icon: FileArchive }
+        ]
+    },
+    {
+        title: "Cloud & Infrastructure",
+        skills: [
+            { name: "AWS", icon: FaAws },
+            { name: "Google Cloud", icon: SiGooglecloud },
+            { name: "Git", icon: SiGit }
+        ]
+    }
+];
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.05 } }
 };
 
-const categoryColors: Record<string, string> = {
-    Languages: "from-violet-600/20 to-violet-600/5 border-violet-500/20",
-    "Frameworks & Libraries": "from-blue-600/20 to-blue-600/5 border-blue-500/20",
-    Databases: "from-green-600/20 to-green-600/5 border-green-500/20",
-    "Systems & Networking": "from-orange-600/20 to-orange-600/5 border-orange-500/20",
-    "Tools & Platforms": "from-cyan-600/20 to-cyan-600/5 border-cyan-500/20",
-};
-
-const categoryTextColors: Record<string, string> = {
-    Languages: "text-violet-400",
-    "Frameworks & Libraries": "text-blue-400",
-    Databases: "text-green-400",
-    "Systems & Networking": "text-orange-400",
-    "Tools & Platforms": "text-cyan-400",
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.4 } }
 };
 
 export function TechStack() {
     return (
         <SectionWrapper id="tech-stack" className="relative py-24 px-6 overflow-hidden">
-            {/* Soft radial glow behind section */}
-            <div
-                className="pointer-events-none absolute inset-0 mix-blend-screen"
-                style={{
-                    background: "radial-gradient(circle at center, rgba(139,92,246,0.12) 0%, transparent 70%)",
-                }}
-            />
-
             <div className="relative max-w-6xl mx-auto">
                 <SectionHeading label="Technical Skills" title="My Tech Stack" />
 
-                <div className="relative w-full overflow-hidden py-16 text-white/80">
-                    {/* First Loop: always visible, smaller height on mobile */}
-                    <div className="md:hidden">
-                        <LogoLoop
-                            logos={techLogos}
-                            speed={70}
-                            direction="left"
-                            logoHeight={32}
-                            gap={40}
-                            scaleOnHover
-                            fadeOut
-                            ariaLabel="Technology stack mobile"
-                        />
-                    </div>
-                    <div className="hidden md:block">
-                        <LogoLoop
-                            logos={techLogos}
-                            speed={90}
-                            direction="left"
-                            logoHeight={44}
-                            gap={60}
-                            scaleOnHover
-                            fadeOut
-                            ariaLabel="Technology stack"
-                        />
-                    </div>
+                <div className="relative flex justify-center mb-16">
+                    <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.18)_0%,transparent_70%)] blur-3xl"></div>
 
-                    {/* Second Loop: only visible on tablet/desktop */}
-                    <div className="hidden md:block mt-8">
-                        <LogoLoop
-                            logos={[...techLogos].reverse()}
-                            speed={70}
-                            direction="right"
-                            logoHeight={36}
-                            gap={50}
-                            scaleOnHover
-                            fadeOut
-                            ariaLabel="Technology stack second row"
-                        />
+                    <div className="relative w-full overflow-hidden text-white/80">
+                        <div className="md:hidden">
+                            <LogoLoop
+                                logos={techLogos}
+                                speed={70}
+                                direction="left"
+                                logoHeight={32}
+                                gap={40}
+                                scaleOnHover
+                                fadeOut
+                                ariaLabel="Technology stack mobile"
+                            />
+                        </div>
+                        <div className="hidden md:block">
+                            <LogoLoop
+                                logos={techLogos}
+                                speed={100}
+                                direction="left"
+                                logoHeight={50}
+                                gap={60}
+                                scaleOnHover
+                                fadeOut
+                                ariaLabel="Technologies I use"
+                            />
+                        </div>
+                        <div className="hidden md:block mt-8">
+                            <LogoLoop
+                                logos={[...techLogos].reverse()}
+                                speed={70}
+                                direction="right"
+                                logoHeight={36}
+                                gap={50}
+                                scaleOnHover
+                                fadeOut
+                                ariaLabel="Technology stack second row"
+                            />
+                        </div>
                     </div>
                 </div>
 
-                <div className="space-y-10">
-                    {Object.entries(portfolioData.skills).map(([category, skills]) => (
-                        <div key={category}>
-                            <h3 className={`text-sm font-mono uppercase tracking-widest mb-4 ${categoryTextColors[category] ?? "text-white/40"}`}>
-                                {category}
+                <div>
+                    {skillCategories.map((category) => (
+                        <div key={category.title} className="mb-12">
+                            <h3 className="text-sm uppercase tracking-wider text-gray-400 mb-4 text-center sm:text-left">
+                                {category.title}
                             </h3>
-                            <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-                                {skills.map((skill) => (
-                                    <StaggerItem key={skill}>
-                                        <div
-                                            className={`flex items-center gap-3 p-3 rounded-xl bg-gradient-to-br ${categoryColors[category] ?? "from-white/5 to-white/0 border-white/10"} border backdrop-blur-sm hover:scale-105 transition-transform duration-200 cursor-default group`}
+
+                            <motion.div
+                                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{ once: true, margin: "-50px" }}
+                            >
+                                {category.skills.map((skill) => {
+                                    const Icon = skill.icon;
+                                    return (
+                                        <motion.div
+                                            key={skill.name}
+                                            variants={itemVariants}
+                                            className="flex items-center justify-center gap-2 rounded-xl px-4 py-3 bg-white/5 border border-white/10 backdrop-blur transition-all duration-300 hover:scale-105 hover:border-purple-400/40 hover:shadow-[0_0_20px_rgba(168,85,247,0.25)] group"
                                         >
-                                            <span className="text-xl leading-none" aria-hidden>
-                                                {techIcons[skill] ?? "◆"}
+                                            <Icon className="text-2xl text-white/70 group-hover:text-purple-400 transition-colors duration-300" />
+                                            <span className="text-base font-medium text-white/90 group-hover:text-white transition-colors duration-300">
+                                                {skill.name}
                                             </span>
-                                            <span className="text-sm text-white/70 group-hover:text-white transition-colors font-mono truncate">
-                                                {skill}
-                                            </span>
-                                        </div>
-                                    </StaggerItem>
-                                ))}
-                            </StaggerContainer>
+                                        </motion.div>
+                                    );
+                                })}
+                            </motion.div>
                         </div>
                     ))}
                 </div>
