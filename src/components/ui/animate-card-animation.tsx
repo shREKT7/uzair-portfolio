@@ -56,8 +56,19 @@ export function AnimatedCardStack({ projects }: AnimatedCardStackProps) {
     return (
         <>
             <div className="flex flex-col items-center gap-10">
-                {/* ─── Card Stack ─── */}
-                <div className="relative w-full max-w-[360px] h-[480px]">
+                {/* ─── Card Stack — responsive width + height ─── */}
+                <div className="relative w-full sm:w-[512px] lg:w-[720px] xl:w-[820px] h-[520px] sm:h-[560px] lg:h-[680px] xl:h-[720px] mx-auto">
+                    {/* Radial glow behind top card */}
+                    <motion.div
+                        className="absolute inset-0 -z-10 pointer-events-none opacity-70 blur-xl"
+                        animate={{ scale: 1 }}
+                        whileHover={{ scale: 1.08 }}
+                        transition={{ type: "spring", stiffness: 180, damping: 20 }}
+                        style={{
+                            background:
+                                "radial-gradient(circle at center, rgba(139,92,246,0.28) 0%, rgba(139,92,246,0.15) 30%, rgba(139,92,246,0.08) 50%, transparent 75%)",
+                        }}
+                    />
                     <AnimatePresence initial={false}>
                         {cards.map((project, index) => {
                             const isTop = index === 0;
