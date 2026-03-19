@@ -58,6 +58,24 @@ export const portfolioData: PortfolioData = {
     },
     projects: [
         {
+            id: "cortexrag",
+            name: "CortexRAG",
+            type: "AI / Systems / LLM",
+            description:
+                "An agentic Retrieval-Augmented Generation (RAG) system that dynamically routes queries between document retrieval, local LLM reasoning, and real-time web search using LangGraph.",
+            features: [
+                "Multi-agent orchestration with LangGraph",
+                "FAISS-based semantic document retrieval",
+                "Ollama-powered local LLM reasoning",
+                "Tavily real-time web search integration",
+                "Adaptive query routing pipeline",
+                "Fully local, privacy-first AI system",
+            ],
+            techStack: ["LangGraph", "LangChain", "Ollama", "FAISS", "MongoDB", "FastAPI", "Streamlit", "Python"],
+            github: "https://github.com/shREKT7/cortex-rag",
+            image: "/projects/cortexrag.png",
+        },
+        {
             id: "flowsentinel",
             name: "FlowSentinel",
             type: "Systems / Networking / Security",

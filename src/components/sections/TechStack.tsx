@@ -18,9 +18,12 @@ import {
     SiMysql,
     SiGooglecloud,
     SiGit,
-    SiGithub
+    SiGithub,
+    SiLangchain,
+    SiFastapi,
+    SiStreamlit
 } from "react-icons/si";
-import { Network, Activity, FileArchive } from "lucide-react";
+import { Network, Activity, FileArchive, Brain, Database } from "lucide-react";
 
 const techLogos = [
     { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -37,7 +40,13 @@ const techLogos = [
     { node: <FaAws />, title: "AWS" },
     { node: <SiGooglecloud />, title: "Google Cloud" },
     { node: <SiGit />, title: "Git" },
-    { node: <SiGithub />, title: "GitHub" }
+    { node: <SiGithub />, title: "GitHub" },
+    { node: <SiLangchain />, title: "LangChain" },
+    { node: <Network size="1em" />, title: "LangGraph" },
+    { node: <Brain size="1em" />, title: "Ollama" },
+    { node: <Database size="1em" />, title: "FAISS" },
+    { node: <SiFastapi />, title: "FastAPI" },
+    { node: <SiStreamlit />, title: "Streamlit" }
 ];
 
 const skillCategories = [
