@@ -8,6 +8,7 @@ export interface Project {
     github: string;
     demo?: string;
     image: string;
+    status?: string;
 }
 
 export interface Certification {
@@ -39,24 +40,37 @@ export const portfolioData: PortfolioData = {
     github: "https://github.com/shREKT7",
     linkedin: "https://www.linkedin.com/in/uzairteli/",
     tagline:
-        "AI / Systems Developer focused on Machine Learning, Networking Systems, and Scalable Software Engineering.",
+        "Building ML systems that think and networks that don't break — from pediatric AI research to deep packet inspection engines.",
     about:
         "I am a Computer Science Engineering student at NMIMS Indore with strong interests in Machine Learning, Systems Engineering, and Network Security. I enjoy building real-world software systems that combine AI models with scalable architectures. My work spans deep learning, network traffic analysis, distributed systems, and full-stack web applications.",
     skills: {
         Languages: ["C++", "Python", "Java", "JavaScript", "SQL"],
-        "Frameworks & Libraries": ["PyTorch", "TensorFlow", "Flask", "MERN Stack"],
-        Databases: ["MongoDB", "MySQL", "SQL"],
-        "Systems & Networking": [
-            "TCP/IP",
-            "Packet Analysis",
-            "PCAP",
-            "TLS",
-            "Multithreading",
-            "Flow Tracking",
-        ],
-        "Tools & Platforms": ["Git", "GitHub", "CMake", "AWS", "Google Cloud"],
+        "AI / ML": ["PyTorch", "TensorFlow", "LangChain", "LangGraph", "FAISS", "Qdrant", "Ollama"],
+        "Web & APIs": ["FastAPI", "Flask", "Streamlit", "MERN Stack"],
+        Databases: ["MongoDB", "MySQL"],
+        "Systems & Networking": ["TCP/IP", "PCAP", "TLS", "Multi-threading", "Flow Tracking"],
+        "Tools & Platforms": ["Git", "GitHub", "CMake", "AWS", "Google Cloud", "Vercel"],
     },
     projects: [
+        {
+            id: "sepsis-research",
+            name: "Pediatric Sepsis Prediction — ML Research",
+            type: "Research / ML / Explainable AI",
+            description:
+                "Supervised research paper on early sepsis onset detection in pediatric ICU patients. Built a comparative ML/DL pipeline including CatBoost, BiLSTM, and a novel hybrid model, with SHAP-based explainability on the PIC v1.1.0 database.",
+            features: [
+                "Comparative ML/DL pipeline (6 models + BiLSTM + hybrid)",
+                "SHAP TreeExplainer for clinical interpretability",
+                "Phoenix Sepsis Criteria labeling on PIC v1.1.0 dataset",
+                "Novel CatBoost-BiLSTM hybrid as primary contribution",
+                "Class imbalance handling via class weighting",
+                "225 features extracted from first 24 hours of ICU admission",
+            ],
+            techStack: ["Python", "XGBoost", "LightGBM", "CatBoost", "BiLSTM", "SHAP", "Pandas", "Scikit-learn"],
+            github: "#",
+            image: "/projects/sepsis-research.png",
+            status: "In Progress",
+        },
         {
             id: "cortexrag",
             name: "CortexRAG",

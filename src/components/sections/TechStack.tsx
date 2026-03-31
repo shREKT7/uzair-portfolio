@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { SectionWrapper, SectionHeading } from "@/components/ui/section-wrapper";
-import { FaAws } from "react-icons/fa";
 import LogoLoop from "@/components/ui/logo-loop";
 import {
     SiReact,
@@ -21,9 +20,10 @@ import {
     SiGithub,
     SiLangchain,
     SiFastapi,
-    SiStreamlit
+    SiStreamlit,
+    SiVercel
 } from "react-icons/si";
-import { Network, Activity, FileArchive, Brain, Database } from "lucide-react";
+import { Network, Shield, FileArchive, Brain, Database, HardDrive, Cpu, GitBranch, Cloud, Box } from "lucide-react";
 
 const techLogos = [
     { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -37,7 +37,7 @@ const techLogos = [
     { node: <SiFlask />, title: "Flask" },
     { node: <SiMongodb />, title: "MongoDB" },
     { node: <SiMysql />, title: "MySQL" },
-    { node: <FaAws />, title: "AWS" },
+    { node: <Cloud size="1em" />, title: "AWS" },
     { node: <SiGooglecloud />, title: "Google Cloud" },
     { node: <SiGit />, title: "Git" },
     { node: <SiGithub />, title: "GitHub" },
@@ -51,35 +51,62 @@ const techLogos = [
 
 const skillCategories = [
     {
-        title: "Core Languages",
+        title: "Languages",
         skills: [
             { name: "C++", icon: SiCplusplus },
             { name: "Python", icon: SiPython },
-            { name: "JavaScript", icon: SiJavascript }
+            { name: "Java", icon: Cpu },
+            { name: "JavaScript", icon: SiJavascript },
+            { name: "SQL", icon: Database },
         ]
     },
     {
-        title: "AI & Machine Learning",
+        title: "AI / ML",
         skills: [
             { name: "PyTorch", icon: SiPytorch },
             { name: "TensorFlow", icon: SiTensorflow },
-            { name: "Flask", icon: SiFlask }
+            { name: "LangChain", icon: SiLangchain },
+            { name: "LangGraph", icon: Network },
+            { name: "FAISS", icon: Database },
+            { name: "Qdrant", icon: HardDrive },
+            { name: "Ollama", icon: Brain },
+        ]
+    },
+    {
+        title: "Web & APIs",
+        skills: [
+            { name: "FastAPI", icon: SiFastapi },
+            { name: "Flask", icon: SiFlask },
+            { name: "Streamlit", icon: SiStreamlit },
+            { name: "MERN Stack", icon: SiReact },
+        ]
+    },
+    {
+        title: "Databases",
+        skills: [
+            { name: "MongoDB", icon: SiMongodb },
+            { name: "MySQL", icon: SiMysql },
         ]
     },
     {
         title: "Systems & Networking",
         skills: [
             { name: "TCP/IP", icon: Network },
-            { name: "Packet Analysis", icon: Activity },
-            { name: "PCAP", icon: FileArchive }
+            { name: "PCAP", icon: FileArchive },
+            { name: "TLS", icon: Shield },
+            { name: "Multi-threading", icon: Cpu },
+            { name: "Flow Tracking", icon: Box },
         ]
     },
     {
-        title: "Cloud & Infrastructure",
+        title: "Tools & Platforms",
         skills: [
-            { name: "AWS", icon: FaAws },
+            { name: "Git", icon: SiGit },
+            { name: "GitHub", icon: SiGithub },
+            { name: "AWS", icon: Cloud },
             { name: "Google Cloud", icon: SiGooglecloud },
-            { name: "Git", icon: SiGit }
+            { name: "Vercel", icon: SiVercel },
+            { name: "CMake", icon: GitBranch },
         ]
     }
 ];

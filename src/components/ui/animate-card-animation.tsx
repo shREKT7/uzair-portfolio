@@ -134,6 +134,13 @@ export function AnimatedCardStack({ projects }: AnimatedCardStackProps) {
                                             {project.type}
                                         </span>
 
+                                        {/* In Progress badge */}
+                                        {project.status === "In Progress" && (
+                                            <span className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-amber-500/20 backdrop-blur-sm border border-amber-400/40 text-amber-300">
+                                                ⏳ In Progress
+                                            </span>
+                                        )}
+
                                         {/* Position indicator */}
                                         {isTop && (
                                             <span className="absolute top-3 right-3 px-2 py-1 rounded-full text-[10px] font-mono bg-violet-600/20 border border-violet-500/30 text-violet-300">
